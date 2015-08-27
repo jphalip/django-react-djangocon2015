@@ -6,7 +6,7 @@ import Reflux from 'reflux'
 import photoStore from './store'
 import Album from './components/album'
 import Actions from './actions'
-import $ from 'jQuery'
+import $ from 'jquery'
 
 
 const MainController = React.createClass({

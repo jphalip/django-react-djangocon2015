@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import {getFavorite} from './utils'
 import Reflux from 'reflux'
 import Actions from './actions'
-import $ from 'jQuery'
+import $ from 'jquery'
 
 
 const photoStore = Reflux.createStore({
