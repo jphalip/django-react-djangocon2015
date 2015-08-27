@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <div id="myapp"></div>
+
+  <script>
+    window.initialData = {{ data|safe }};
+  </script>
+{% endblock %}

@@ -1,0 +1,80 @@
+/* Animation styles : */
+
+.simple-enter,
+.simple-leave.simple-leave-active {
+  opacity: 0;
+}
+
+.simple-enter.simple-enter-active,
+.simple-leave {
+  opacity: 1;
+}
+
+.simple-enter,
+.simple-leave {
+  transition: all 300ms cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+
+/* Other styles : */
+
+body {
+  color: #000;
+}
+
+.progress {
+  margin: 5em;
+}
+
+.btn-toolbar {
+  margin: 1em 0;
+}
+
+.album .thumbnail .caption {
+  text-align: center;
+  color: black;
+}
+
+.album .thumbnail:hover {
+  cursor: pointer;
+}
+
+.album .thumbnail img {
+  width: 90%;
+  margin: 1em;
+}
+
+.album .glyphicon {
+  font-size: 2em;
+}
+
+.favorites .thumbnail {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.favorites .thumbnail:last-child {
+  margin-bottom: 0;
+}
+
+.favorites .thumbnail:hover {
+  cursor: pointer;
+}
+
+.favorites .thumbnail:hover img {
+  filter: brightness(0.3) blur(1px);
+  -webkit-filter: brightness(0.3) blur(1px);
+}
+
+.album a.list-group-item {
+  color: black;
+}
+
+.album a.list-group-item:last-child {
+  margin-bottom: 2em;
+}
+
+.album a.list-group-item img {
+  margin-right: 1em;
+}

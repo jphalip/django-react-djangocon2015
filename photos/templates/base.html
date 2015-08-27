@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Django &amp; React</title>
+
+  <link rel="stylesheet" href="{% static "css/bootstrap-3.3.5-min.css" %}" type="text/css" />
+  <link rel="stylesheet" href="{% static "css/styles.css" %}" type="text/css" />
+
+</head>
+
+
+<body>
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Django & React Demo</a>
+    </div>
+  </nav>
+
+  {% block content %}{% endblock %}
+
+  <script src="{% static "js/bundle/bundle.js" %}"></script>
+
+</body>
+</html>
