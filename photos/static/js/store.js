@@ -82,7 +82,7 @@ const photoStore = Reflux.createStore({
     })
     .then((favorites) => {
         // Update store with server's authoritative data
-        this.favorites = favorites;
+        this.favorites = favorites.data;
         this.propagateState();
     })
     .catch(() => {
