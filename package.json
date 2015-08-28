@@ -7,7 +7,7 @@
     "react-bootstrap": "0.24.3",
     "reflux": "0.2.12",
     "uuid": "2.0.1",
-    "jquery": "2.1.4",
+    "axios": "0.5.4",
     "lodash": "3.10.1",
     "express": "4.13.3",
     "react-render": "0.3.0",

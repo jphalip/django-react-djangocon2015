@@ -3,7 +3,7 @@ import uuid from 'uuid';
 import {getFavorite} from './utils'
 import Reflux from 'reflux'
 import Actions from './actions'
-import $ from 'jquery'
+import request from 'axios';
 
 
 const photoStore = Reflux.createStore({
@@ -37,13 +37,15 @@ const photoStore = Reflux.createStore({
    */
   fetchData() {
     return new Promise((resolve, reject) => {
-      Promise.all([
-        $.get('/api/photos/?format=json').promise(),
-        $.get('/api/favorites/?format=json').promise()
-      ]).then(([photos, favorites]) => {
-        this.hydrate(photos, favorites);
+      request.all([
+        request.get('/api/photos/?format=json'),
+        request.get('/api/favorites/?format=json')
+      ])
+      .then(([photos, favorites]) => {
+        this.hydrate(photos.data, favorites.data);
         resolve();
-      }).catch(reject);
+      })
+      .catch(reject);
     });
   },
 
@@ -74,23 +76,18 @@ const photoStore = Reflux.createStore({
     this.propagateState();
 
     // Post change to the server
-    $.ajax({
-      type: 'POST',
-      url: '/api/favorites/',
-      contentType: 'application/json',
-      data: JSON.stringify({
+    request.post('/api/favorites/', {
         id: favoriteId,
         photo_id: photo.id
-      }),
-      success: (favorites) => {
+    })
+    .then((favorites) => {
         // Update store with server's authoritative data
         this.favorites = favorites;
         this.propagateState();
-      },
-      error: () => {
+    })
+    .catch(() => {
         // Roll back with fresh data from the server
         this.fetchData();
-      }
     })
   },
 
@@ -105,18 +102,15 @@ const photoStore = Reflux.createStore({
     this.propagateState();
 
     // Post change to the server
-    $.ajax({
-      type: 'DELETE',
-      url: '/api/favorites/' + favorite.id,
-      success: (favorites) => {
+    request.delete('/api/favorites/' + favorite.id)
+    .then((favorites) => {
         // Update store with server's authoritative data
-        this.favorites = favorites;
+        this.favorites = favorites.data;
         this.propagateState();
-      },
-      error: () => {
+    })
+    .catch(() => {
         // Roll back with fresh data from the server
         this.fetchData();
-      }
     });
   },
 
