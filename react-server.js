@@ -2,11 +2,12 @@ var http = require('http');
 var express = require('express');
 var bodyParser = require('body-parser');
 var reactRender = require('react-render');
+var argv = require('yargs').argv;
 
 require('babel/register');  // For the JSX and ES6 conversion
 
-var ADDRESS = '127.0.0.1';
-var PORT = 9009;
+var ADDRESS = argv.host || '127.0.0.1';
+var PORT = argv.port || 9009;
 
 var app = express();
 var server = http.Server(app);

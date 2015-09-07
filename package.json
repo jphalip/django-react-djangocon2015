@@ -10,6 +10,7 @@
     "axios": "0.5.4",
     "lodash": "3.10.1",
     "express": "4.13.3",
+    "yargs": "3.24.0 ",
     "react-render": "0.3.0",
     "body-parser": "1.13.3"
   }
