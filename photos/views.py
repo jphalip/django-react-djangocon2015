@@ -9,17 +9,18 @@ from photos.api import PhotoSerializer, FavoriteSerializer
 
 
 def ajax_hydration(request):
-    return render(request, 'ajax.html')
+    return render(request, 'empty.html')
 
 
 def serialized_hydration(request):
     photos = PhotoSerializer(Photo.objects.all(), many=True)
     favorites = FavoriteSerializer(Favorite.objects.all(), many=True)
+    initial_data = json.dumps({
+        'photos': photos.data,
+        'favorites': favorites.data,
+    }, cls=DjangoJSONEncoder)
     return render(request, 'serialized.html', {
-        'data': json.dumps({
-            'photos': photos.data,
-            'favorites': favorites.data,
-        }, cls=DjangoJSONEncoder)
+        'initial_data': initial_data
     })
 
 
