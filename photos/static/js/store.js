@@ -102,7 +102,7 @@ const photoStore = Reflux.createStore({
     this.propagateState();
 
     // Post change to the server
-    request.delete('/api/favorites/' + favorite.id)
+    request.delete('/api/favorites/' + favorite.id + '/')
     .then((favorites) => {
         // Update store with server's authoritative data
         this.favorites = favorites.data;
