@@ -28,8 +28,12 @@ class CustomTestRunner(DiscoverRunner):
         # Wait until the server is ready before proceeding
         self.node_server.stdout.readline()
         # Point the renderer to our new test server
-        render_server.url = 'http://%s:%s' % (
-            TEST_REACT_SERVER_HOST, TEST_REACT_SERVER_PORT)
+        settings.REACT = {
+            'RENDER': True,
+            'RENDER_URL': 'http://%s:%s' % (
+                TEST_REACT_SERVER_HOST, TEST_REACT_SERVER_PORT
+            ),
+        }
         super(CustomTestRunner, self).setup_test_environment(**kwargs)
 
     def teardown_test_environment(self, **kwargs):
