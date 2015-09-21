@@ -49,6 +49,8 @@ TEMPLATES = [
     },
 ]
 
+TEST_RUNNER = 'project.runner.CustomTestRunner'
+
 WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
